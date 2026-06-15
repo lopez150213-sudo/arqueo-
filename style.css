@@ -1,0 +1,217 @@
+/* CONFIGURACIÓN GENERAL PARA TELÉFONOS (MOBILE-FIRST) */
+* {
+    box-sizing: border-box;
+}
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: #f0f2f5;
+    padding: 8px;
+    margin: 0;
+    color: #333;
+}
+.container {
+    width: 100%;
+    max-width: 500px;
+    background: white;
+    padding: 14px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    margin: 0 auto;
+}
+h2 { 
+    color: #075e54; 
+    margin: 0 0 12px 0; 
+    text-align: center; 
+    font-size: 18px; 
+    border-bottom: 2px solid #075e54; 
+    padding-bottom: 6px;
+}
+.seccion-gestor {
+    background: #eaf2ee;
+    border: 1px solid #b2cfc2;
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 12px;
+}
+.seccion {
+    background: #fdfdfd;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 12px;
+}
+.flex-titulo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+.titulo-seccion {
+    font-weight: bold;
+    color: #075e54;
+    font-size: 12px;
+    text-transform: uppercase;
+}
+.btn-agregar-fila {
+    background-color: #075e54;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+}
+label { font-weight: bold; display: block; margin-bottom: 4px; font-size: 13px; color: #075e54; }
+
+/* INPUTS AMPLIOS FÁCILES DE TOCAR */
+input, select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #bbb;
+    border-radius: 6px;
+    font-size: 15px; /* Evita que iOS haga zoom automático */
+    background-color: #fff;
+}
+input[type="number"] {
+    text-align: right;
+}
+.monto-factura {
+    text-align: left !important;
+    font-weight: bold;
+}
+
+/* TABLAS ADAPTATIVAS PARA PANTALLAS CHICAS */
+.tabla-arqueo {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+.tabla-arqueo th {
+    background: #edf2f0;
+    color: #075e54;
+    padding: 8px 6px;
+    text-align: left;
+    font-size: 12px;
+    border-bottom: 2px solid #cbdcd5;
+}
+.tabla-arqueo td {
+    padding: 6px 4px;
+    border-bottom: 1px solid #eee;
+    vertical-align: middle;
+}
+
+/* BOTÓN DE ELIMINAR CÓMODO */
+.btn-eliminar {
+    background-color: #e53935;
+    color: white;
+    border: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.tc-container { display: flex; flex-direction: column; gap: 4px; }
+.tc-box { font-size: 12px; color: #565656; margin-top: 2px;}
+.tc-box input { width: 85px; font-size: 12px; padding: 4px; display: inline-block; text-align: left; }
+
+.fila-dolar { background-color: #fffde7; }
+.fila-vaucher { background-color: #f9f9f9; }
+
+/* CUADROS DE TOTALES */
+.cuadro-resultado {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: bold;
+    margin-top: 8px;
+}
+.subtotal-cobrado { background-color: #e3f2fd; color: #0d47a1; border: 1px solid #90caf9; }
+.subtotal-efectivo { background-color: #e8f5e9; color: #1b5e20; border: 1px solid #a5d6a7; }
+
+.caja-final {
+    margin-top: 12px;
+    padding: 12px;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 15px;
+    font-weight: bold;
+}
+.balance-ok { background-color: #e8f5e9; border: 2px solid #25d366; color: #1b5e20; }
+.balance-error { background-color: #ffebee; border: 2px solid #ef5350; color: #c62828; }
+
+.btn-enviar {
+    background-color: #25d366;
+    color: white;
+    border: none;
+    padding: 14px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 12px;
+}
+
+/* REGLAS DE RESPONSIVIDAD EXCLUSIVAS PARA TELÉFONOS (PANTALLAS MENORES A 440px) */
+@media screen and (max-width: 440px) {
+    /* Ocultamos la cabecera real de la tabla */
+    .tabla-arqueo thead {
+        display: none;
+    }
+    /* Volvemos cada fila una tarjeta vertical separada */
+    .tabla-arqueo tr {
+        display: block;
+        background: #ffffff;
+        border: 1px solid #e2e8f0;
+        border-radius: 8px;
+        padding: 8px;
+        margin-bottom: 10px;
+    }
+    .tabla-arqueo td {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        text-align: right;
+        padding: 6px 4px;
+        border-bottom: 1px dashed #edf2f7;
+    }
+    .tabla-arqueo td:last-child {
+        border-bottom: none;
+    }
+    /* Agregamos las etiquetas de texto al lado izquierdo usando el atributo data-label */
+    .tabla-arqueo td::before {
+        content: attr(data-label);
+        font-weight: bold;
+        color: #4a5568;
+        font-size: 12px;
+        text-align: left;
+        float: left;
+    }
+    /* Ajustamos el tamaño de los inputs dentro de la tarjeta móvil */
+    .tabla-arqueo td input {
+        width: 55%;
+        max-width: 160px;
+    }
+    .btn-eliminar {
+        width: 100%;
+        padding: 6px;
+        font-size: 13px;
+    }
+    .btn-eliminar::before {
+        content: "Eliminar Fila ";
+        margin-right: 4px;
+    }
+    .tc-box input {
+        width: 100%;
+    }
+}
