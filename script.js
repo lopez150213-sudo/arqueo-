@@ -13,7 +13,7 @@ function agregarFilaFactura() {
     const tbody = document.getElementById("tbodyFacturas");
     const nuevaFila = document.createElement("tr");
     
-    // CAMBIO: Se eliminó el value="0" y se dejó placeholder="0" para que aparezca vacío al añadir filas nuevas
+    // Se crea la fila limpia con placeholder="0" para que no estorbe al escribir en el celular
     nuevaFila.innerHTML = `
         <td data-label="Monto (C$)"><input type="number" class="monto-factura" value="0" step="0.01"></td>
         <td data-label="Facturas"><input type="number" class="cant-factura" placeholder="0" min="0"></td>
@@ -43,7 +43,11 @@ function recalcularTodo() {
         
         if (inputMonto && inputCant) {
             const valorMonto = parseFloat(inputMonto.value) || 0;
-            const cantidad = parseInt(inputCant.value) || 0;
+            
+            // Validación estricta de vacíos para compatibilidad total con GitHub y servidores web
+            const stringCantidad = inputCant.value.trim();
+            const cantidad = stringCantidad === "" ? 0 : (parseInt(stringCantidad, 10) || 0);
+            
             const subtotal = valorMonto * cantidad;
             
             fila.querySelector(".subtotal-factura").textContent = subtotal.toFixed(2);
@@ -56,32 +60,35 @@ function recalcularTodo() {
 
     let totalReal = 0;
 
-    // Calcular Dólares
+    // Calcular Dólares de forma segura si está vacío
     const tc = parseFloat(document.getElementById("numTipoCambio").value) || 36.6243;
-    const cantDolar = parseFloat(document.getElementById("cantDolar").value) || 0;
+    const stringDolar = document.getElementById("cantDolar").value.trim();
+    const cantDolar = stringDolar === "" ? 0 : (parseFloat(stringDolar) || 0);
     const subtotalDolar = cantDolar * tc;
     document.getElementById("subtotalDolar").textContent = subtotalDolar.toFixed(2);
     totalReal += subtotalDolar;
 
-    // Billetes Nacionales
+    // Billetes Nacionales con validación de vacíos
     const filasEfectivo = document.querySelectorAll(".cant-efectivo");
     filasEfectivo.forEach(input => {
         const valorNominal = parseInt(input.getAttribute("data-valor"));
-        const cantidad = parseInt(input.value) || 0;
+        const stringEfectivo = input.value.trim();
+        const cantidad = stringEfectivo === "" ? 0 : (parseInt(stringEfectivo, 10) || 0);
         const subtotal = valorNominal * cantidad;
         
         input.closest("tr").querySelector(".subtotal-efectivo").textContent = subtotal.toFixed(2);
         totalReal += subtotal;
     });
 
-    // Vauchers
-    const montoVaucher = parseFloat(document.getElementById("montoVaucher").value) || 0;
+    // Vauchers / Transferencias
+    const stringVaucher = document.getElementById("montoVaucher").value.trim();
+    const montoVaucher = stringVaucher === "" ? 0 : (parseFloat(stringVaucher) || 0);
     document.getElementById("subtotalVaucher").textContent = montoVaucher.toFixed(2);
     totalReal += montoVaucher;
 
     document.getElementById("lblTotalEfectivo").textContent = totalReal.toFixed(2);
 
-    // Diferencia balanceada
+    // Diferencia y estados de la caja
     const diferencia = totalReal - totalSistema;
     const cajaDif = document.getElementById("cajaDiferencia");
 
@@ -118,7 +125,9 @@ function enviarReporteWhatsApp() {
         const inputCant = fila.querySelector(".cant-factura");
         
         if(inputMonto && inputCant) {
-            const cantidad = parseInt(inputCant.value) || 0;
+            const stringCantidad = inputCant.value.trim();
+            const cantidad = stringCantidad === "" ? 0 : (parseInt(stringCantidad, 10) || 0);
+            
             if(cantidad > 0) {
                 const valor = parseFloat(inputMonto.value) || 0;
                 const sub = valor * cantidad;
@@ -132,7 +141,8 @@ function enviarReporteWhatsApp() {
     let totalReal = 0;
     let mensajeEfectivo = "";
 
-    const cantDolar = parseFloat(document.getElementById("cantDolar").value) || 0;
+    const stringDolar = document.getElementById("cantDolar").value.trim();
+    const cantDolar = stringDolar === "" ? 0 : (parseFloat(stringDolar) || 0);
     if(cantDolar > 0) {
         const subDolar = cantDolar * tc;
         mensajeEfectivo += `• Dólares ($): $ ${cantDolar} (C$ ${subDolar.toFixed(2)})\n`;
@@ -140,7 +150,9 @@ function enviarReporteWhatsApp() {
     }
 
     document.querySelectorAll(".cant-efectivo").forEach(input => {
-        const cantidad = parseInt(input.value) || 0;
+        const stringEfectivo = input.value.trim();
+        const cantidad = stringEfectivo === "" ? 0 : (parseInt(stringEfectivo, 10) || 0);
+        
         if(cantidad > 0) {
             const valor = parseInt(input.getAttribute("data-valor"));
             const sub = valor * cantidad;
@@ -149,7 +161,8 @@ function enviarReporteWhatsApp() {
         }
     });
 
-    const montoVaucher = parseFloat(document.getElementById("montoVaucher").value) || 0;
+    const stringVaucher = document.getElementById("montoVaucher").value.trim();
+    const montoVaucher = stringVaucher === "" ? 0 : (parseFloat(stringVaucher) || 0);
     if(montoVaucher > 0) {
         mensajeEfectivo += `• Vauchers/Transf: C$ ${montoVaucher.toFixed(2)}\n`;
         totalReal += montoVaucher;
