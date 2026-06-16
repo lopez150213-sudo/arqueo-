@@ -13,10 +13,10 @@ function agregarFilaFactura() {
     const tbody = document.getElementById("tbodyFacturas");
     const nuevaFila = document.createElement("tr");
     
-    // El atributo data-label permite mantener el texto identificador en la versión móvil vertical
+    // CAMBIO: Se eliminó el value="0" y se dejó placeholder="0" para que aparezca vacío al añadir filas nuevas
     nuevaFila.innerHTML = `
         <td data-label="Monto (C$)"><input type="number" class="monto-factura" value="0" step="0.01"></td>
-        <td data-label="Cantidad"><input type="number" class="cant-factura" value="0" min="0"></td>
+        <td data-label="Facturas"><input type="number" class="cant-factura" placeholder="0" min="0"></td>
         <td data-label="Subtotal (C$)" class="subtotal-factura">0.00</td>
         <td><button class="btn-eliminar" onclick="eliminarFila(this)">×</button></td>
     `;
@@ -34,6 +34,7 @@ function eliminarFila(boton) {
 
 function recalcularTodo() {
     let totalSistema = 0;
+    let totalCantidadFacturas = 0;
     const filasFacturas = document.querySelectorAll("#tbodyFacturas tr");
     
     filasFacturas.forEach(fila => {
@@ -47,9 +48,11 @@ function recalcularTodo() {
             
             fila.querySelector(".subtotal-factura").textContent = subtotal.toFixed(2);
             totalSistema += subtotal;
+            totalCantidadFacturas += cantidad;
         }
     });
     document.getElementById("lblTotalCobrado").textContent = totalSistema.toFixed(2);
+    document.getElementById("lblTotalCantidadFacturas").textContent = totalCantidadFacturas;
 
     let totalReal = 0;
 
@@ -106,6 +109,7 @@ function enviarReporteWhatsApp() {
     }
 
     let totalSistema = 0;
+    let totalCantidadFacturas = 0;
     let mensajeFacturas = "";
     const filasFacturas = document.querySelectorAll("#tbodyFacturas tr");
     
@@ -120,6 +124,7 @@ function enviarReporteWhatsApp() {
                 const sub = valor * cantidad;
                 mensajeFacturas += `• C$ ${valor.toFixed(2)} x ${cantidad}: C$ ${sub.toFixed(2)}\n`;
                 totalSistema += sub;
+                totalCantidadFacturas += cantidad;
             }
         }
     });
@@ -164,6 +169,7 @@ function enviarReporteWhatsApp() {
 
     mensaje += `📋 *DETALLE FACTURACIÓN (SISTEMA):*\n`;
     mensaje += mensajeFacturas || "_No se registraron cobros_\n";
+    mensaje += `👉 *TOTAL FACTURAS:* ${totalCantidadFacturas}\n`;
     mensaje += `👉 *TOTAL COBRADO:* C$ ${totalSistema.toFixed(2)}\n\n`;
 
     mensaje += `💵 *DESGLOSE DE ENTREGA REAL:*\n`;
