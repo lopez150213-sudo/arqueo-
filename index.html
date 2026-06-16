@@ -34,26 +34,29 @@
                 <thead>
                     <tr>
                         <th style="width: 35%;">Monto (C$)</th>
-                        <th style="width: 30%;">Cantidad</th>
+                        <th style="width: 30%;">Facturas</th>
                         <th style="width: 25%;">Subtotal</th>
                         <th style="width: 10%; text-align: center;">×</th>
                     </tr>
                 </thead>
                 <tbody id="tbodyFacturas">
-                    <tr><td data-label="Monto (C$)"><input type="number" class="monto-factura" value="475.93" step="0.01"></td><td data-label="Cantidad"><input type="number" class="cant-factura" value="0" min="0"></td><td data-label="Subtotal (C$)" class="subtotal-factura">0.00</td><td><button class="btn-eliminar" onclick="eliminarFila(this)">×</button></td></tr>
-                    <tr><td data-label="Monto (C$)"><input type="number" class="monto-factura" value="518.05" step="0.01"></td><td data-label="Cantidad"><input type="number" class="cant-factura" value="0" min="0"></td><td data-label="Subtotal (C$)" class="subtotal-factura">0.00</td><td><button class="btn-eliminar" onclick="eliminarFila(this)">×</button></td></tr>
-                    <tr><td data-label="Monto (C$)"><input type="number" class="monto-factura" value="526.47" step="0.01"></td><td data-label="Cantidad"><input type="number" class="cant-factura" value="0" min="0"></td><td data-label="Subtotal (C$)" class="subtotal-factura">0.00</td><td><button class="btn-eliminar" onclick="eliminarFila(this)">×</button></td></tr>
-                    <tr><td data-label="Monto (C$)"><input type="number" class="monto-factura" value="568.59" step="0.01"></td><td data-label="Cantidad"><input type="number" class="cant-factura" value="0" min="0"></td><td data-label="Subtotal (C$)" class="subtotal-factura">0.00</td><td><button class="btn-eliminar" onclick="eliminarFila(this)">×</button></td></tr>
-                    <tr><td data-label="Monto (C$)"><input type="number" class="monto-factura" value="1207.94" step="0.01"></td><td data-label="Cantidad"><input type="number" class="cant-factura" value="0" min="0"></td><td data-label="Subtotal (C$)" class="subtotal-factura">0.00</td><td><button class="btn-eliminar" onclick="eliminarFila(this)">×</button></td></tr>
-                    <tr><td data-label="Monto (C$)"><input type="number" class="monto-factura" value="1263.11" step="0.01"></td><td data-label="Cantidad"><input type="number" class="cant-factura" value="0" min="0"></td><td data-label="Subtotal (C$)" class="subtotal-factura">0.00</td><td><button class="btn-eliminar" onclick="eliminarFila(this)">×</button></td></tr>
-                    <tr><td data-label="Monto (C$)"><input type="number" class="monto-factura" value="915.22" step="0.01"></td><td data-label="Cantidad"><input type="number" class="cant-factura" value="0" min="0"></td><td data-label="Subtotal (C$)" class="subtotal-factura">0.00</td><td><button class="btn-eliminar" onclick="eliminarFila(this)">×</button></td></tr>
+                    <tr><td data-label="Monto (C$)"><input type="number" class="monto-factura" value="475.93" step="0.01"></td><td data-label="Facturas"><input type="number" class="cant-factura" placeholder="0" min="0"></td><td data-label="Subtotal (C$)" class="subtotal-factura">0.00</td><td><button class="btn-eliminar" onclick="eliminarFila(this)">×</button></td></tr>
+                    <tr><td data-label="Monto (C$)"><input type="number" class="monto-factura" value="518.05" step="0.01"></td><td data-label="Facturas"><input type="number" class="cant-factura" placeholder="0" min="0"></td><td data-label="Subtotal (C$)" class="subtotal-factura">0.00</td><td><button class="btn-eliminar" onclick="eliminarFila(this)">×</button></td></tr>
+                    <tr><td data-label="Monto (C$)"><input type="number" class="monto-factura" value="526.47" step="0.01"></td><td data-label="Facturas"><input type="number" class="cant-factura" placeholder="0" min="0"></td><td data-label="Subtotal (C$)" class="subtotal-factura">0.00</td><td><button class="btn-eliminar" onclick="eliminarFila(this)">×</button></td></tr>
+                    <tr><td data-label="Monto (C$)"><input type="number" class="monto-factura" value="568.59" step="0.01"></td><td data-label="Facturas"><input type="number" class="cant-factura" placeholder="0" min="0"></td><td data-label="Subtotal (C$)" class="subtotal-factura">0.00</td><td><button class="btn-eliminar" onclick="eliminarFila(this)">×</button></td></tr>
+                    <tr><td data-label="Monto (C$)"><input type="number" class="monto-factura" value="1207.94" step="0.01"></td><td data-label="Facturas"><input type="number" class="cant-factura" placeholder="0" min="0"></td><td data-label="Subtotal (C$)" class="subtotal-factura">0.00</td><td><button class="btn-eliminar" onclick="eliminarFila(this)">×</button></td></tr>
+                    <tr><td data-label="Monto (C$)"><input type="number" class="monto-factura" value="1263.11" step="0.01"></td><td data-label="Facturas"><input type="number" class="cant-factura" placeholder="0" min="0"></td><td data-label="Subtotal (C$)" class="subtotal-factura">0.00</td><td><button class="btn-eliminar" onclick="eliminarFila(this)">×</button></td></tr>
+                    <tr><td data-label="Monto (C$)"><input type="number" class="monto-factura" value="915.22" step="0.01"></td><td data-label="Facturas"><input type="number" class="cant-factura" placeholder="0" min="0"></td><td data-label="Subtotal (C$)" class="subtotal-factura">0.00</td><td><button class="btn-eliminar" onclick="eliminarFila(this)">×</button></td></tr>
                 </tbody>
             </table>
         </div>
         
         <div class="cuadro-resultado subtotal-cobrado">
             <span>TOTAL SEGÚN SISTEMA:</span>
-            <span>C$ <span id="lblTotalCobrado">0.00</span></span>
+            <div style="display: flex; gap: 15px;">
+                <span>Facturas: <span id="lblTotalCantidadFacturas">0</span></span>
+                <span>C$ <span id="lblTotalCobrado">0.00</span></span>
+            </div>
         </div>
     </div>
 
@@ -76,21 +79,21 @@
                                 <div class="tc-box">T/C: <input type="number" id="numTipoCambio" value="36.6243" step="0.0001"></div>
                             </div>
                         </td>
-                        <td data-label="Cantidad"><input type="number" id="cantDolar" value="0" min="0" step="any"></td>
+                        <td data-label="Cantidad"><input type="number" id="cantDolar" placeholder="0" min="0" step="any"></td>
                         <td data-label="Subtotal (C$)" id="subtotalDolar">0.00</td>
                     </tr>
-                    <tr><td data-label="Denominación">C$ 1,000</td><td data-label="Cantidad"><input type="number" class="cant-efectivo" data-valor="1000" value="0" min="0"></td><td data-label="Subtotal (C$)" class="subtotal-efectivo">0.00</td></tr>
-                    <tr><td data-label="Denominación">C$ 500</td><td data-label="Cantidad"><input type="number" class="cant-efectivo" data-valor="500" value="0" min="0"></td><td data-label="Subtotal (C$)" class="subtotal-efectivo">0.00</td></tr>
-                    <tr><td data-label="Denominación">C$ 200</td><td data-label="Cantidad"><input type="number" class="cant-efectivo" data-valor="200" value="0" min="0"></td><td data-label="Subtotal (C$)" class="subtotal-efectivo">0.00</td></tr>
-                    <tr><td data-label="Denominación">C$ 100</td><td data-label="Cantidad"><input type="number" class="cant-efectivo" data-valor="100" value="0" min="0"></td><td class="subtotal-efectivo">0.00</td></tr>
-                    <tr><td data-label="Denominación">C$ 50</td><td data-label="Cantidad"><input type="number" class="cant-efectivo" data-valor="50" value="0" min="0"></td><td class="subtotal-efectivo">0.00</td></tr>
-                    <tr><td data-label="Denominación">C$ 20</td><td data-label="Cantidad"><input type="number" class="cant-efectivo" data-valor="20" value="0" min="0"></td><td class="subtotal-efectivo">0.00</td></tr>
-                    <tr><td data-label="Denominación">C$ 10</td><td data-label="Cantidad"><input type="number" class="cant-efectivo" data-valor="10" value="0" min="0"></td><td class="subtotal-efectivo">0.00</td></tr>
-                    <tr><td data-label="Denominación">C$ 5</td><td data-label="Cantidad"><input type="number" class="cant-efectivo" data-valor="5" value="0" min="0"></td><td class="subtotal-efectivo">0.00</td></tr>
-                    <tr><td data-label="Denominación">C$ 1</td><td data-label="Cantidad"><input type="number" class="cant-efectivo" data-valor="1" value="0" min="0"></td><td class="subtotal-efectivo">0.00</td></tr>
+                    <tr><td data-label="Denominación">C$ 1,000</td><td data-label="Cantidad"><input type="number" class="cant-efectivo" data-valor="1000" placeholder="0" min="0"></td><td data-label="Subtotal (C$)" class="subtotal-efectivo">0.00</td></tr>
+                    <tr><td data-label="Denominación">C$ 500</td><td data-label="Cantidad"><input type="number" class="cant-efectivo" data-valor="500" placeholder="0" min="0"></td><td data-label="Subtotal (C$)" class="subtotal-efectivo">0.00</td></tr>
+                    <tr><td data-label="Denominación">C$ 200</td><td data-label="Cantidad"><input type="number" class="cant-efectivo" data-valor="200" placeholder="0" min="0"></td><td data-label="Subtotal (C$)" class="subtotal-efectivo">0.00</td></tr>
+                    <tr><td data-label="Denominación">C$ 100</td><td data-label="Cantidad"><input type="number" class="cant-efectivo" data-valor="100" placeholder="0" min="0"></td><td class="subtotal-efectivo">0.00</td></tr>
+                    <tr><td data-label="Denominación">C$ 50</td><td data-label="Cantidad"><input type="number" class="cant-efectivo" data-valor="50" placeholder="0" min="0"></td><td class="subtotal-efectivo">0.00</td></tr>
+                    <tr><td data-label="Denominación">C$ 20</td><td data-label="Cantidad"><input type="number" class="cant-efectivo" data-valor="20" placeholder="0" min="0"></td><td class="subtotal-efectivo">0.00</td></tr>
+                    <tr><td data-label="Denominación">C$ 10</td><td data-label="Cantidad"><input type="number" class="cant-efectivo" data-valor="10" placeholder="0" min="0"></td><td class="subtotal-efectivo">0.00</td></tr>
+                    <tr><td data-label="Denominación">C$ 5</td><td data-label="Cantidad"><input type="number" class="cant-efectivo" data-valor="5" placeholder="0" min="0"></td><td class="subtotal-efectivo">0.00</td></tr>
+                    <tr><td data-label="Denominación">C$ 1</td><td data-label="Cantidad"><input type="number" class="cant-efectivo" data-valor="1" placeholder="0" min="0"></td><td class="subtotal-efectivo">0.00</td></tr>
                     <tr class="fila-vaucher">
                         <td data-label="Denominación">Vauchers / Transf.</td>
-                        <td data-label="Monto Neto"><input type="number" id="montoVaucher" value="0" min="0" step="any"></td>
+                        <td data-label="Monto Neto"><input type="number" id="montoVaucher" placeholder="0" min="0" step="any"></td>
                         <td data-label="Subtotal (C$)" id="subtotalVaucher">0.00</td>
                     </tr>
                 </tbody>
